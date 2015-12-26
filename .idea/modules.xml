@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AppTimer.iml" filepath="$PROJECT_DIR$/AppTimer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apptimer/apptimer.iml" filepath="$PROJECT_DIR$/apptimer/apptimer.iml" />
+    </modules>
+  </component>
+</project>
