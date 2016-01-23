@@ -6,11 +6,11 @@ import android.graphics.drawable.Drawable;
  * Created by nayan on 25/12/15.
  */
 public class TimeStat {
-    public String name;
+    public String packageName;
     public long time;
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String packageName) {
+        this.packageName = packageName;
     }
 
     public void setTime(long time) {
@@ -22,11 +22,11 @@ public class TimeStat {
     }
 
     public String getName() {
-        return name;
+        return packageName;
     }
 
-    public TimeStat(String name, long time) {
-        this.name = name;
+    public TimeStat(String packageName, long time) {
+        this.packageName = packageName;
         this.time=time;
     }
 }

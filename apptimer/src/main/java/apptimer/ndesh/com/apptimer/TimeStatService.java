@@ -25,9 +25,9 @@ public class TimeStatService extends Service {
         KeyguardManager myKM = (KeyguardManager) ctx.getSystemService(Context.KEYGUARD_SERVICE);
         if( myKM.inKeyguardRestrictedInputMode()) {
             store(ctx);
-            //it is locked
+            //phone is locked
         } else {
-            //it is not locked
+            //phone is not locked
         }
         stopSelf();
         return START_STICKY;
@@ -42,14 +42,7 @@ public class TimeStatService extends Service {
         else{
             foregroundTaskPackageName =   am.getRunningTasks(1).get(0).topActivity.getPackageName();
         }
-        PackageManager pm = ctx.getPackageManager();
-        PackageInfo foregroundAppPackageInfo = null;
-        try {
-            foregroundAppPackageInfo = pm.getPackageInfo(foregroundTaskPackageName, 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        dp.putInformation(dp, foregroundAppPackageInfo.applicationInfo.loadLabel(pm).toString());
+        dp.putInformation(dp, foregroundTaskPackageName.toString());
 
     }
 
