@@ -6,6 +6,14 @@ AppTimer in 2 steps
 <code>AppTimer.initialize(context);</code><br/><br/>
 2. Retrieve Time Stats:<br/>
 <code>List<TimeStats> list = AppTimer.getTimeStats(context);</code><br/><br/>
+3. The structure of TimeStats is:<br/>
+```
+public class TimeStat {
+    public String packageName;
+    public long time;
+}
+```
+
 
 Add AppTimer to your project
 ----------------------------
