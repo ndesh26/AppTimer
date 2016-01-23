@@ -1,6 +1,7 @@
 package apptimer.ndesh.com.apptimer;
 
 import android.app.ActivityManager;
+import android.app.KeyguardManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -21,7 +22,13 @@ public class TimeStatService extends Service {
         return null;
     }
     public int onStartCommand(Intent intent, int flags, int startId) {
-        store(ctx);
+        KeyguardManager myKM = (KeyguardManager) ctx.getSystemService(Context.KEYGUARD_SERVICE);
+        if( myKM.inKeyguardRestrictedInputMode()) {
+            store(ctx);
+            //it is locked
+        } else {
+            //it is not locked
+        }
         stopSelf();
         return START_STICKY;
 
