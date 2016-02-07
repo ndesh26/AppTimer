@@ -5,10 +5,10 @@ apply plugin: 'com.jfrog.bintray'
 def gitUrl = 'https://github.com/ndesh26/AppTimer.git'
 def siteUrl = 'https://github.com/ndesh26/AppTimer'
 // This is the library version used when deploying the artifact
-version = "0.0.1"
+version = "0.0.2"
 group = "com.ndesh"
 android {
-    compileSdkVersion 23
+    compileSdkVersion 22
     buildToolsVersion "23.0.2"
 
     defaultConfig {
@@ -39,8 +39,8 @@ install {
                 // Set your license
                 licenses {
                     license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        name 'The MIT License'
+                        url 'https://opensource.org/licenses/MIT'
                     }
                 }
                 developers {
@@ -102,7 +102,7 @@ bintray {
             }
         }
         vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
+        licenses = ["MIT"]
         publish = true
     }
 }
