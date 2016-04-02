@@ -10,19 +10,25 @@ import android.util.Log;
 /**
  * Created by nayan on 24/12/15.
  */
-public class Database extends SQLiteOpenHelper{
+public class Database extends SQLiteOpenHelper
+{
     public static final int database_version=1;
     public String CREATE_QUERY="create table "+Table.TableInfo.TABLE_NAME+" ("+ Table.TableInfo.APPDATA+" TEXT," +Table.TableInfo.TIME+" LONG)";
-    public Database(Context context) {
+    public Database (Context context)
+    {
         super(context, Table.TableInfo.DATABASE_NAME, null, database_version);
     }
     long time;
+
     @Override
-    public void onCreate(SQLiteDatabase sdb){
+    public void onCreate (SQLiteDatabase sdb)
+    {
         sdb.execSQL(CREATE_QUERY);
         Log.d("database operations", "table created");
     }
-    public void putInformation(Database dop,String value){
+
+    public void putInformation (Database dop,String value)
+    {
         int count=0;
         SQLiteDatabase SQ =dop.getWritableDatabase();
         Cursor CR=getInformation(dop);
@@ -47,16 +53,18 @@ public class Database extends SQLiteOpenHelper{
 
         }
         SQ.close();
-
-
-
     }
-    public Cursor getInformation(Database dop){
+
+    public Cursor getInformation (Database dop)
+    {
         SQLiteDatabase sq=dop.getReadableDatabase();
         String coloumns[]={Table.TableInfo.APPDATA, Table.TableInfo.TIME};
         Cursor CR = sq.query(Table.TableInfo.TABLE_NAME,coloumns,null,null,null,null,null);
-        return CR;}
-    public void update(Database dop,String appname,long time){
+        return CR;
+    }
+
+    public void update (Database dop,String appname,long time)
+    {
         SQLiteDatabase SQ=dop.getWritableDatabase();
         String selection= Table.TableInfo.APPDATA+" LIKE ?";
         String args[]={appname};
@@ -65,8 +73,7 @@ public class Database extends SQLiteOpenHelper{
         SQ.update(Table.TableInfo.TABLE_NAME,cv,selection,args);
         SQ.close();
     }
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-    }
+    @Override
+    public void onUpgrade (SQLiteDatabase db, int oldVersion, int newVersion) {}
 }

@@ -10,39 +10,40 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.IBinder;
 
-public class TimeStatService extends Service {
+public class TimeStatService extends Service
+{
     String foregroundTaskPackageName;
     Context ctx=this;
-    public TimeStatService() {
-    }
+    public TimeStatService () {}
 
     @Override
-    public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
+    public IBinder onBind (Intent intent)
+    {
         return null;
     }
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        KeyguardManager myKM = (KeyguardManager) ctx.getSystemService(Context.KEYGUARD_SERVICE);
-        if( myKM.inKeyguardRestrictedInputMode()) {
-            store(ctx);
+    public int onStartCommand (Intent intent, int flags, int startId)
+    {
+        KeyguardManager keyguardManager = (KeyguardManager) ctx.getSystemService (Context.KEYGUARD_SERVICE);
+        if( keyguardManager.inKeyguardRestrictedInputMode ()) {
+            store (ctx);
             //phone is locked
         } else {
             //phone is not locked
         }
-        stopSelf();
+        stopSelf ();
         return START_STICKY;
-
     }
-    public void store(Context ctx){
-        final Database dp=new Database(ctx);
-        final ActivityManager am = (ActivityManager) ctx.getSystemService(ACTIVITY_SERVICE);
+    public void store (Context ctx)
+    {
+        final Database database = new Database (ctx);
+        final ActivityManager activityManager = (ActivityManager) ctx.getSystemService(ACTIVITY_SERVICE);
         if(Build.VERSION.SDK_INT > 20){
-            foregroundTaskPackageName =am.getRunningAppProcesses().get(0).processName;
+            foregroundTaskPackageName = activityManager.getRunningAppProcesses().get(0).processName;
         }
         else{
-            foregroundTaskPackageName =   am.getRunningTasks(1).get(0).topActivity.getPackageName();
+            foregroundTaskPackageName = activityManager.getRunningTasks(1).get(0).topActivity.getPackageName();
         }
-        dp.putInformation(dp, foregroundTaskPackageName.toString());
+        database.putInformation (database, foregroundTaskPackageName.toString());
 
     }
 
