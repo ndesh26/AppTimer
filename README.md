@@ -1,5 +1,5 @@
 # AppTimer
-AppTimer is a open source library which provides the time spent by the user on each app. AppTimer supports until Android Kitkat. It uses GET_TASKS permission to retrieve the app which is running in the foreground.
+AppTimer is a android library which provides the time spent by the user on each app. AppTimer supports until Android Kitkat. It uses GET_TASKS permission to retrieve the app which is running in the foreground.
 AppTimer in 2 steps
 -------------------
 1. Initialize Library:<br/>
